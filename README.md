@@ -1,8 +1,21 @@
 # Deepenv
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/deepenv`. To experiment with that code, run `bin/console` for an interactive prompt.
+[Best practice](https://12factor.net/config) demands that configuration that changes across environments should be contained in the environment rather than in code. This helps with security, managing environments, portability and open-source development.
 
-TODO: Delete this and the text above, and describe your gem
+Unfortunately environment variables are **flat** string key-value pairs, whereas most apps organise their configuration in **deeply nested** objects. Environment variable names cannot include symbols to indicate nesting. 
+
+This means backend developers have to take environment variables such as
+```bash
+MYAPP_MYDATASTORE_CONNECTION_RETRY_INTERVAL=5s
+```
+
+are manually wire them into the configuration object.
+
+
+
+<!-- Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/deepenv`. To experiment with that code, run `bin/console` for an interactive prompt.
+
+TODO: Delete this and the text above, and describe your gem -->
 
 ## Installation
 
