@@ -12,6 +12,7 @@ module Deepenv
     @@nesting_delimiter = "__"
 
     def deep_set(hash, value, *keys)
+      hash.default_proc = proc { |h,k| h[k] = Hash.new(&h.default_proc) }
       keys[0...-1].inject(hash) do |acc, key|
         acc.public_send(:[], key.to_sym)
       end.public_send(:[]=, keys.last, value)
@@ -36,15 +37,28 @@ module Deepenv
       to_ret
     end
 
-    def parse_env_value(val) 
-      if val === '' then
+    def parse_env_value(val_in) 
+      val = val_in.strip
+      if /^ +$/ =~ val_in then  # if one ore more whitespaces only, assume it's on purpose
+        val_in
+      elsif val === '' then     # blank goes to nil
         nil
-      elsif val === 'null' then # so as not to be parsed by json later
+      elsif val === 'null' then # return null as string so as not to be parsed by json later
         val 
-      elsif /\d+\.\d+/ =~ val
+      elsif /^\d+\.\d+$/ =~ val
         val.to_f
-      elsif /\d+/ =~ val
+      elsif /^\d+$/ =~ val
         val.to_i
+      elsif /^true$/i =~ val
+        true
+      elsif /^false$/i =~ val
+        false
+      else 
+        begin
+          JSON.parse(val)
+        rescue
+          val
+        end
       end
     end
 
