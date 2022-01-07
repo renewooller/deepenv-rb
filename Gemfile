@@ -11,9 +11,12 @@ gem "rspec", "~> 3.0"
 
 gem "standard", "~> 1.3"
 
+gem "deep_enumerable", "~> 0.1.4"
+
 group :development do 
      gem 'guard-rspec', require: false
      gem 'solargraph'
      gem 'ruby-debug-ide'
      gem 'debase', "~> 0.2.5.beta2"
 end
+

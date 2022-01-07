@@ -91,4 +91,15 @@ RSpec.describe Deepenv do
 
   end
 
+  it "merges existing config" do
+    ENV['DEEPENV_NEW'] = '1'
+
+    existing = { existing: 5, "stringkey" => "asdf"}
+
+    config = Deepenv.to_config(existing)
+
+    expect(config).to eq({new:1, existing:5, "stringkey" => "asdf"})
+
+  end
+
 end
