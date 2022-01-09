@@ -11,31 +11,16 @@ MYAPP_MYDATASTORE_CONNECTION_RETRY_INTERVAL=5s
 
 are manually wire them into the configuration object.
 
-
-
-<!-- Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/deepenv`. To experiment with that code, run `bin/console` for an interactive prompt.
-
-TODO: Delete this and the text above, and describe your gem -->
-
 ## Installation
 
-Add this line to your application's Gemfile:
+Add the deepenv gem:
 
-```ruby
-gem 'deepenv'
-```
+    $ bundle add deepenv
 
-And then execute:
-
-    $ bundle install
-
-Or install it yourself as:
-
-    $ gem install deepenv
-
+this adds deepenv to your Gemfile and runs bundle install
 ## Usage
 
-TODO: Write usage instructions here
+
 
 ## Development
 
