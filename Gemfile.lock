@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    deepenv (0.0.1.1.g088d684)
+    deepenv (0.0.1.2.g9efb42d)
 
 GEM
   remote: https://rubygems.org/

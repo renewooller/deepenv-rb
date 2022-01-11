@@ -20,5 +20,3 @@ group :development do
      gem 'debase', "~> 0.2.5.beta2"
 end
 
-
-gem "git-version-bump", "~> 0.17.1"
