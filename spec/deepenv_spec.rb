@@ -102,4 +102,23 @@ RSpec.describe Deepenv do
 
   end
 
+  it "can use custom prefix" do 
+    ENV['MYAPP_PARAM'] = 'text'
+    
+    config = Deepenv.to_config({}, {prefix: "MYAPP_"})
+    expect(config).to eq({param: 'text'}) 
+
+    ENV.delete('MYAPP_PARAM')
+
+  end
+
+  it "can use custom delimiter" do
+    ENV["DEEPENV_ONE_DD_TWO_DD_THREE"] = '16'
+
+    config = Deepenv.to_config({}, {nesting_delimiter: "_DD_"})
+    expect(config).to eq({one: {two: { three: 16}}})
+
+
+  end
+
 end
