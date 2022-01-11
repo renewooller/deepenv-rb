@@ -29,13 +29,13 @@ end
 And executing with some double underscore environment variables EG:
 
 ```bash
- DEEPENV_A__B__C=20 bin/rails server
+ DEEPENV_A__B__C=20 DEEPENV_A__X__Y=ardvark bin/rails server
 ```
 
 Shows the deep configuration automatically generated from the environment:
 
 ```Ruby
-{:a=>{:b=>{:c=>"20"}}}
+{:a=>{:b=>{:c=>20}, :x=>{:y=>"ardvark"}}}
 ```
 
 ## Installation
