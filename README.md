@@ -11,6 +11,33 @@ MYAPP_MYDATASTORE_CONNECTION_RETRY_INTERVAL=5s
 
 are manually wire them into the configuration object.
 
+Deepenv makes this a lot simpler. EG including deepenv like so:
+
+```Ruby
+require "deepenv"
+
+module MyApp
+# ...
+  class Application < Rails::Application
+# ... 
+    config.deepenv = Deepenv.to_config()
+    print config.deepenv
+  end
+end
+```
+
+And executing with some double underscore environment variables EG:
+
+```bash
+ DEEPENV_A__B__C=20,DEEPENV_A__X__Y=ardvark bin/rails server
+```
+
+Shows the deep configuration automatically generated from the environment:
+
+```Ruby
+{:a=>{:b=>{:c=>"20,DEEPENV_A__X__Y=ardvark"}}}
+```
+
 ## Installation
 
 Add the deepenv gem:
