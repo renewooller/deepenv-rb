@@ -1,5 +1,5 @@
 # frozen_string_literal: true
-
+require 'git-version-bump'
 module Deepenv
-  VERSION = "0.1.1"
+  VERSION = GVB.version
 end
