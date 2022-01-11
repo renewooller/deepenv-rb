@@ -12,6 +12,9 @@ module Deepenv
     @@nesting_delimiter = "__"
 
     def to_config (original={}, opts={})
+      @@prefix = opts.fetch(:prefix, @@prefix)
+      @@nesting_delimiter = opts.fetch(:nesting_delimiter, @@nesting_delimiter)
+      
       ENV.filter {|k| k.start_with? @@prefix}
       .map {|k, v| [k, parse_env_value(v)]}
       .each_with_object(
